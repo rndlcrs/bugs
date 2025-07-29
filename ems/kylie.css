@@ -1,0 +1,106 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+.container{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container img{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    z-index: -1;
+    filter: blur(10px);
+}
+
+.content h1{
+    margin-top: 135px;
+    font-size: 250px;
+    color: #d9F5F0;
+}
+
+.content p{
+    font-size: 20px;
+    letter-spacing: 23px;
+    color: #383838;
+    margin-top: -45px;
+    margin-left: 100px;
+    position: fixed;
+    font-style: bold;
+}
+
+.click a{
+    position: relative;
+    font-size: 50px;
+    color: #d9F5F0;
+    text-decoration: none;
+    padding: 10px 120px;
+    border: #000000;
+    border-radius: 60px;
+    transition: 0.3s;
+    bottom: -100px;
+}
+
+.content a:hover{
+    background-color: rgb(124, 188, 207);
+    color: black;
+}
+
+/* .content{
+    text-align: center;
+}
+
+.content h1{
+    font-size: 200px;
+    color: rgb(21, 118, 125);
+    margin-bottom: 50px;
+    mix-blend-mode: multiply;   
+}
+
+.content a{
+    font-size: 40px;
+    color: black;
+    text-decoration: none;
+    padding: 10px 100px;
+    border: 2px solid #fff;
+    border-radius: 70px;
+    transition: 0.3s;
+    mix-blend-mode: multiply;  
+}
+
+.content a:hover{
+    background-color: rgb(76, 70, 70);
+    color: #fff;
+}
+
+.background-clip{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+@media (min-aspect-ratio:16/9) {
+    .background-clip{
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-aspect-ratio:16/9) {
+    .background-clip{
+        width: auto;
+        height: 100%;
+    }
+} */

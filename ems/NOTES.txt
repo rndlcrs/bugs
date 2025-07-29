@@ -1,0 +1,20 @@
+*CUSTOMER*
+
+Login/register - pinalitan ko nalang and maganda naman nagging result so keri na. pinagsama ko na din para di na mahirapan yung user na pumunta sa panibagong html again.
+
+Email Verification - nilagyan ko din. di ko na ginawang sms verify para mas madali.
+
+Forgot Password - nilagyan ko na din since need talaga siya. kayo na bahala kung anong gusto niyong baguhin, like background ganon haha 
+
+Home Page - pinalitan ko din para mas maayos din. kayo bahala Tristan kung anong want niyo ilagay, kung ano mas better.
+
+Order- pinalitan ko lang din ng background
+
+
+*ADMIN*
+
+about sa admin, hindi ko kasi alam kung pano lagyan ng main content sa mga orders, dashboard, etc. so kayo nalang po mag-ayos.
+
+
+
+PS. PASENSYA NA AT LATE. AND THANK YOU HEHE

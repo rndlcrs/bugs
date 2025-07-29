@@ -1,0 +1,139 @@
+<?php
+session_start();
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Database connection
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "kylies";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+// Handle form submission
+if (isset($_POST['submit'])) {
+    $Email = $_POST['Email'];
+    $Password = $_POST['Password'];
+
+    // Prepare and bind
+    $stmt = $conn->prepare("SELECT Email, Password FROM kyliescustomers WHERE Email = ?");
+    $stmt->bind_param("s", $Email);
+    $stmt->execute();
+    $stmt->store_result();
+
+    // Check if the user exists
+    if ($stmt->num_rows > 0) {
+        $stmt->bind_result($db_email, $db_password);
+        $stmt->fetch();
+
+        // Verify the password
+        if (password_verify($Password, $db_password)) {
+            // Password is correct, redirect to the customer home page
+            $_SESSION['email'] = $db_email;
+            $stmt->close();
+            $conn->close();
+            header("Location: CUSTOMER/cushome.html");
+            exit();
+        } else {
+            // Invalid credentials
+            $_SESSION['error'] = "Your Login Name or Password is invalid";
+            $stmt->close();
+            $conn->close();
+            header("Location: login.php"); // Stay on the login page
+            exit();
+        }
+    } else {
+        // No user found
+        $_SESSION['error'] = "Your Login Name or Password is invalid";
+        $stmt->close();
+        $conn->close();
+        header("Location: login.php"); // Stay on the login page
+        exit();
+    }
+}
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>LOGIN</title>
+</head>
+<body>
+    <div class="loginform">
+        <div class="container">
+            <div class="slide-controls">
+                <input type="radio" name="slide" id="login" checked>
+                <input type="radio" name="slide" id="register">
+                <label for="login" class="slide login">Login</label>
+                <label for="register" class="slide register">Register</label>
+                <div class="slider-tab"></div>
+            </div>
+
+            <div class="form-content">
+                <form action="login.php" method="POST" class="login">
+                    <?php 
+                    // Display error message if exists
+                    if (isset($_SESSION['error'])) {
+                        echo '<div class="error-message">'.$_SESSION['error'].'</div>';
+                        unset($_SESSION['error']);
+                    }
+                    ?>
+                    <div class="field">
+                        <input type="email" id="email" name="Email" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" id="password" name="Password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link">
+                        <a href="forgotpassword.html">Forgot Password?</a>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" name="submit" value="Login" required>
+                    </div>
+                    <div class="register-link">
+                        Not a Member? <a href="register.php">Register Now!</a>
+                    </div>
+                </form>
+
+                <form action="register.php" class="register">
+                    <div class="field">
+                        <input type="text" placeholder="Username" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Phone Number" required>
+                    </div>
+                    <div class="field">
+                        <input type="text" placeholder="Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm Password" required>
+                    </div>
+                    <div class="field btn">
+                        <div class="btn-layer"></div>
+                        <input type="submit" value="Register">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="login2.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="verify.css">
+    <title>OTP Email</title>
+</head>
+<body>
+
+    <div class="opt-forms">
+        <div class="header-forms">
+            <div class="auth-icon">
+                <i class='bx  bx-phone'></i> 
+            </div>
+            <h4>Verification Code</h4>
+            <p>Please Enter The Verification Code We Sent <br> To Your Registered Mobile Number</p>
+        </div>
+
+        <form action="javascript:void(0)">
+            <div class="inputs">
+                <input type="text" class="code-input" required="">
+                <input type="text" class="code-input" required="">
+                <input type="text" class="code-input" required="">
+                <input type="text" class="code-input" required="">
+                <input type="text" class="code-input" required="">
+            </div>
+
+            <div class="btn-wrap">
+                <button type="button">Confirm</button>
+            </div>
+        </form>
+    </div>
+
+<!-- ========= JavaScript Code =========-->
+
+    <script>
+        // const inputs = [...document.querySelectorAll(".opt-forms input")];
+        // const submitBtn = document.querySelector(".opt-forms button");
+
+        // inputs.forEach((input, index) => {
+        //     input.addEventListener ("keyup"), (e) => {
+        //         if(!(e.keyCode >= 48 && e.keyCode <= 57)){
+        //             e.target.value = "";
+        //             return;
+        //         }
+
+        //         e.target.value = String.fromCharCode(e.keyCode);
+
+        //         if(index < (inputs.length - 1)){
+        //             inputs[index+1].focus();
+        //         }
+
+        //         setTimeout(()=>{
+        //             const isDisableBtn = inputs.some(e => e.value.length !== 1);
+        //             submitBtn.disabled = isDisableBtn;
+        //         }, 0);
+        //     }
+        // });
+        
+        
+        
+        
+        
+        const inputElement = [...document.querySelectorAll('input.code-input')];
+        inputElement.forEach((elem, index)=>{
+            elem.addEventListener('keydown', (e)=>{
+                if(e.keyCode === 8 && e.target.value === ''){
+                    inputElement[Math.max(0, index - 1)].focus()
+                }
+            });
+
+            elem.addEventListener('input', (e)=>{
+                const [first, ...rest] = e.target.value;
+                e.target.value = first ?? ''
+                const lastInputBox = index === inputElement.length - 1;
+                const insertedContent =first !== underfined; 
+                if(insertedContent && !lastInputBox){
+                    inputElement[index + 1].focus();
+                    inputElement[index + 1].value = rest.join('')
+                    inputElement[index + 1].dispatchEvent(new Event('input'))
+                }
+            
+                setTimeout(()=>{
+                    const isDisableBtn = inputs.some(e => e.value.length !== 1);
+                    submitBtn.disabled = isDisableBtn;
+                }, 0);
+
+            })
+        })
+    </script>
+
+
+</body>
+</html>

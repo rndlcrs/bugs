@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invalid Login</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<style>
+    * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #5c92c1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.message-box {
+    background-color: white;
+    border-radius: 20px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    width: 300px;
+}
+
+.error-icon {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+}
+
+h1 {
+    font-size: 24px;
+    color: black;
+    margin-bottom: 20px;
+}
+
+.abutton {
+    background-color: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s;
+    text-decoration: none;
+}
+
+.abutton:hover {
+    background-color: #0f62bd;
+}
+
+.abutton:active {
+    background-color: #0c4b8a;
+}
+</style>
+<body>
+    <div class="container">
+        <div class="message-box">
+            <img src="images\invlog.png" alt="Error Icon" class="error-icon">
+            <h1>Invalid Login!</h1>
+            <a href="login.php" class="abutton">Back</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
